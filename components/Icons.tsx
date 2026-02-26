@@ -1,5 +1,25 @@
-import React from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, ChevronRight, ChevronLeft, X, Terminal, Database, Cloud, Code2, ImageIcon } from 'lucide-react';
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  ExternalLink, 
+  Code2, 
+  Briefcase, 
+  GraduationCap, 
+  ChevronLeft, 
+  ChevronRight, 
+  X,
+  Cpu,
+  Globe,
+  Layers,
+  Terminal,
+  User,
+  Database,
+  Cloud,
+  ImageIcon
+} from 'lucide-react';
 
 export const Icons = {
   github: Github,
@@ -7,13 +27,20 @@ export const Icons = {
   mail: Mail,
   phone: Phone,
   mapPin: MapPin,
-  external: ExternalLink,
-  arrowRight: ChevronRight,
+  externalLink: ExternalLink, // Also map 'external' if used
+  external: ExternalLink, // Keep both for compatibility
+  code: Code2,
+  briefcase: Briefcase,
+  education: GraduationCap,
   arrowLeft: ChevronLeft,
+  arrowRight: ChevronRight,
   close: X,
+  cpu: Cpu,
+  globe: Globe,
+  layers: Layers,
   terminal: Terminal,
+  user: User,
   database: Database,
   cloud: Cloud,
-  code: Code2,
   image: ImageIcon
 };

@@ -4,7 +4,7 @@ import { Icons } from './Icons';
 import { SkillBadge } from './SkillBadge';
 import { ImageCarousel } from './ImageCarousel';
 
-export const ProjectGrid: React.FC = () => {
+export const ProjectSlider: React.FC = () => {
   const [carouselOpen, setCarouselOpen] = useState(false);
   const [selectedProjectImages, setSelectedProjectImages] = useState<string[]>([]);
   const [initialImageIndex, setInitialImageIndex] = useState(0);
@@ -23,16 +23,16 @@ export const ProjectGrid: React.FC = () => {
         <h3 className="text-2xl font-bold text-white">Featured Projects</h3>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
         {PROJECTS.map((project) => (
           <div 
             key={project.id} 
-            className="flex flex-col bg-zinc-900/40 border border-zinc-800/60 rounded-xl overflow-hidden hover:bg-zinc-900 hover:border-zinc-700 transition-all duration-300 group"
+            className="flex-none w-[90vw] md:w-[600px] snap-center flex flex-col bg-zinc-900/40 border border-zinc-800/60 rounded-xl overflow-hidden hover:bg-zinc-900 hover:border-zinc-700 transition-all duration-300 group"
           >
             {/* Project Image Header */}
             {project.images && project.images.length > 0 && (
               <div 
-                className="relative h-48 w-full overflow-hidden cursor-pointer group/image"
+                className="relative h-64 w-full overflow-hidden cursor-pointer group/image"
                 onClick={() => openCarousel(project.images)}
               >
                 <img 

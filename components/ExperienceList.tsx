@@ -4,38 +4,29 @@ import { Icons } from './Icons';
 
 export const ExperienceList: React.FC = () => {
   return (
-    <div className="space-y-12">
-      <div className="flex items-center gap-3 mb-8">
-        <Icons.code className="text-indigo-400" size={24} />
-        <h3 className="text-2xl font-bold text-white">Work Experience</h3>
+    <div>
+      <div className="flex items-center gap-3 mb-12">
+        <Icons.briefcase className="text-indigo-400" size={24} />
+        <h2 className="text-3xl font-bold text-white">Experience</h2>
       </div>
-
-      <div className="relative border-l border-zinc-800 ml-3 space-y-12">
-        {EXPERIENCE.map((job, index) => (
-          <div key={job.id} className="relative pl-8 sm:pl-12 group">
-            {/* Timeline Dot */}
-            <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-zinc-800 border border-zinc-600 group-hover:bg-indigo-500 group-hover:border-indigo-400 transition-colors"></div>
-
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-              <h4 className="text-xl font-semibold text-zinc-100 group-hover:text-indigo-300 transition-colors">
-                {job.role}
-              </h4>
-              <span className="font-mono text-sm text-zinc-500 mt-1 sm:mt-0 bg-zinc-900 px-2 py-1 rounded">
-                {job.period}
-              </span>
+      
+      <div className="space-y-12">
+        {EXPERIENCE.map((exp, idx) => (
+          <div key={idx} className="group relative pl-8 border-l border-zinc-800 hover:border-indigo-500/50 transition-colors">
+            <div className="absolute -left-[5px] top-0 w-[9px] h-[9px] rounded-full bg-zinc-800 group-hover:bg-indigo-500 transition-colors" />
+            
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
+              <div>
+                <h3 className="text-xl font-bold text-zinc-100">{exp.role}</h3>
+                <p className="text-indigo-400 font-medium">{exp.company}</p>
+              </div>
+              <span className="text-sm font-mono text-zinc-500 mt-2 sm:mt-0">{exp.period}</span>
             </div>
-
-            <div className="flex items-center gap-2 mb-4 text-zinc-400 text-sm">
-              <span className="font-medium text-zinc-300">{job.company}</span>
-              <span className="w-1 h-1 rounded-full bg-zinc-600"></span>
-              <span>{job.location}</span>
-            </div>
-
-            <ul className="space-y-3">
-              {job.achievements.map((item, i) => (
-                <li key={i} className="flex gap-3 text-zinc-400 text-base leading-relaxed">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-700 flex-shrink-0 group-hover:bg-indigo-500/50 transition-colors"></span>
-                  <span>{item}</span>
+            
+            <ul className="text-zinc-400 mb-6 space-y-2 max-w-3xl list-disc list-inside">
+              {exp.achievements.map((achievement, idx) => (
+                <li key={idx} className="leading-relaxed pl-2 marker:text-indigo-500/50">
+                  {achievement}
                 </li>
               ))}
             </ul>

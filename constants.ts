@@ -1,14 +1,29 @@
 import { Experience, Profile, Project, SkillCategory } from "./types";
+import hostVaultImg from "./assets/thumbnails/hostvault.svg";
+import profileImg from "./assets/cropped_1.jpg";
+import hostVaultApp1 from "./assets/thumbnails/2_hostvault.png";
+import hostVaultApp2 from "./assets/thumbnails/1_hostvault.png";
+import team2challengeApp1 from "./assets/thumbnails/1_www.team2challenge.ch.png";
+import team2challengeApp2 from "./assets/thumbnails/2_www.team2challenge.ch.png";
+import sightflowApp1 from "./assets/thumbnails/screenshot_app.getsightflow.com.png";
+import sightflowApp2 from "./assets/thumbnails/2_app.getsightflow.com.png";
+import fundreefThumb from "./assets/thumbnails/landing_www.fundreef.com.png";
+import fundreefApp1 from "./assets/thumbnails/1_app.fundreef.com.png";
+import fundreefApp2 from "./assets/thumbnails/2_app.fundreef.com.png";
+import convertYTThumb from "./assets/thumbnails/logo_convertyt.png";
+import convertYTApp1 from "./assets/thumbnails/2_convertyt.png";
+import rentigoThumb from "./assets/thumbnails/1_rentigo.co.uk.png";
+import rentigoApp1 from "./assets/thumbnails/2_rentigo.co.uk.png";
 
 // NOTE: Replace this URL with your actual image URL after hosting the image, or import a local asset.
 // For now, using a placeholder that represents a professional avatar.
-export const PROFILE_IMAGE_URL = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop";
+export const PROFILE_IMAGE_URL = profileImg;
 
 export const PROFILE: Profile = {
   name: "Muhammad Wahaj",
-  role: "Software Developer | PHP | Scalable Systems",
+  role: "Software Developer | PHP | NodeJs | Go | React",
   location: "Lahore, Pakistan",
-  summary: "Software Developer with 4+ years building high-performance PHP applications using Laravel and MVC frameworks. Experienced in integrating payment systems like Stripe, optimizing APIs serving 900k+ records, and working across relational and non-relational databases. I thrive in agile teams where scalability, security, and clean API design are priorities.",
+  summary: "Software Developer with 4+ years building high-performance PHP applications using Laravel/MVC frameworks, NodeJS & Go.",
   socials: [
     {
       platform: "Email",
@@ -66,6 +81,54 @@ export const EXPERIENCE: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "rentigo",
+    title: "Rentigo - Property Management Platform",
+    techStack: ["Laravel", "Livewire", "MySQL", "Stripe", "DocuSign", "GoCardless"],
+    location: "Global",
+    period: "2023 - Present",
+    description: [
+      "Built a comprehensive property management platform handling rental, sales, and international properties with multi-role access (Admin, Landlord, Tenant, Buyer).",
+      "Integrated third-party property portals (Rightmove, Zoopla, OnTheMarket) for automated property syndication and lead management.",
+      "Implemented payment processing with Stripe and GoCardless, DocuSign e-signatures, SMS notifications via TextLocal, and real-time WebSocket notifications."
+    ],
+    images: [
+        rentigoThumb,
+        rentigoApp1
+    ]
+  },
+  {
+    id: "hostvault",
+    title: "Host Vault - Secure SSH Manager",
+    techStack: ["Go", "React", "TypeScript", "Wails", "Zustand"],
+    location: "Global",
+    period: "2024 - Present",
+    description: [
+      "Developed a secure, modern SSH connection manager desktop application with a frameless window design and custom controls.",
+      "Features include full SSH connection management, terminal integration with split panes, command snippet management, and secure credential storage.",
+      "Built with Wails (Go + React), supporting local/guest modes, 15+ themes, and encrypted master password protection."
+    ],
+    images: [
+        hostVaultApp1,
+        hostVaultApp2
+    ]
+  },
+  {
+    id: "convertyt",
+    title: "ConvertYT - Modern Video Downloader",
+    techStack: ["React Native", "TypeScript", "Reanimated", "YouTube API"],
+    location: "Global",
+    period: "2025 - Present",
+    description: [
+      "Built a feature-rich video downloader with React Native and TypeScript, featuring a modern UI with dark/light mode and smooth 60fps animations.",
+      "Implemented real-time YouTube search via Data API v3 with pagination, search history, and offline mock data fallbacks.",
+      "Developed a comprehensive download system supporting multiple formats (MP4, MP3, WEBM) and qualities (144p to 4K) with background progress tracking."
+    ],
+    images: [
+        convertYTThumb,
+        convertYTApp1
+    ]
+  },
+  {
     id: "team2challenge",
     title: "Team2Challenge - Multi-Tenant Sports Management",
     techStack: ["NestJS", "TypeScript", "PostgreSQL", "RabbitMQ", "AWS"],
@@ -77,38 +140,41 @@ export const PROJECTS: Project[] = [
       "Wrote optimized PostgreSQL queries with Redis caching, improving API response times by 50% under high load."
     ],
     images: [
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop"
+        team2challengeApp1,
+        team2challengeApp2
     ]
   },
   {
     id: "sightflow",
-    title: "SightFlow",
-    techStack: ["ReactJs", "Python", "Laravel", "AWS"],
+    title: "Sightflow - AI Support Assistant Platform",
+    techStack: ["Laravel", "React", "Python", "Gemini 2.0", "Pinecone", "AWS"],
     location: "Lahore, Pakistan",
     period: "12/2024 - 06/2025",
     description: [
-      "Built WebSocket streaming system integrating Gemini AI for real-time audio/image analysis with automatic reconnection.",
-      "Developed media processing pipeline handling 50+ concurrent screen shares with server-side buffering and S3 integration."
+      "Built a full-stack RAG platform with a Laravel REST API and React/Vite frontend, enabling companies to create customizable AI assistants.",
+      "Developed a Python AI engine using Google Gemini 2.0 Flash Live API and WebSockets for real-time voice, video, and screen sharing interactions.",
+      "Integrated Pinecone vector database for context-aware responses and AWS S3 for document storage, delivering intelligent customer support."
     ],
     images: [
-        "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop"
+        sightflowApp1,
+        sightflowApp2
     ]
   },
   {
-    id: "notix",
-    title: "Notix-AI",
-    techStack: ["ReactJs", "Python", "Laravel", "MySQL", "AWS"],
-    location: "Lahore, Pakistan",
-    period: "10/2024 – 02/2025",
+    id: "fundreef",
+    title: "Fundreef - Startup-Investor Marketplace",
+    techStack: ["Laravel", "Livewire", "MySQL", "Meilisearch", "Stripe", "Gemini AI"],
+    location: "Global",
+    period: "2024 - Present",
     description: [
-      "Built audio-to-text pipeline using Deepgram API and Google MedLM, processing 1,000+ medical notes monthly with 95% accuracy.",
-      "Implemented serverless transcription jobs using AWS Lambda and SQS queuing with automatic retry logic."
+      "Built a full-stack two-sided marketplace connecting startups with investors, featuring comprehensive investor/fund database with 50+ data fields and Meilisearch-powered fast search.",
+      "Developed AI-powered fundraising tools including pitch deck analyzer, business plan generator, term sheet analyzer, and company valuation calculator using Google Gemini API.",
+      "Implemented subscription-based monetization with Stripe, role-based access control (founders, angel investors, fund investors), and CRM/pipeline management with activity tracking."
     ],
     images: [
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+        fundreefThumb,
+        fundreefApp1,
+        fundreefApp2
     ]
   }
 ];
@@ -116,11 +182,11 @@ export const PROJECTS: Project[] = [
 export const SKILLS: SkillCategory[] = [
   {
     category: "Languages",
-    skills: ["PHP", "JavaScript", "Go", "TypeScript", "Python", "SQL"]
+    skills: ["PHP", "JavaScript & TypeScript", "Go", "Python"]
   },
   {
     category: "Backend & Frameworks",
-    skills: ["Laravel", "Doctrine", "Node.js", "Express.js", "React.js", "jQuery", "REST API"]
+    skills: ["Laravel", "Node.js", "Express.js", "React.js", "jQuery", "FastAPI"]
   },
   {
     category: "Databases",

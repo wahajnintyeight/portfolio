@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { ExperienceList } from './components/ExperienceList';
 import { ProjectSlider } from './components/ProjectSlider';
@@ -6,8 +6,14 @@ import { SkillCloud } from './components/SkillCloud';
 import { Section } from './components/Section';
 import { EDUCATION, PROFILE, PROFILE_IMAGE_URL } from './constants';
 import { Icons } from './components/Icons';
+import { trackVisit } from './lib/trackVisit';
 
 export default function App() {
+  // Fire-and-forget visit tracking on first mount.
+  useEffect(() => {
+    trackVisit();
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#050505] text-zinc-300 selection:bg-indigo-500/30 font-sans">
       

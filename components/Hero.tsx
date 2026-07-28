@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { PROFILE, PROFILE_IMAGE_URL } from '../constants';
+import { CHATBOT_URL, PROFILE, PROFILE_IMAGE_URL } from '../constants';
 import { Icons } from './Icons';
 
 export const Hero: React.FC = () => {
@@ -35,6 +35,18 @@ export const Hero: React.FC = () => {
             <a href="#projects" className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-zinc-200 transition-all flex items-center gap-2 group">
               View Projects
               <Icons.arrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <a
+              href={CHATBOT_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-4 rounded-full border border-indigo-500/40 bg-indigo-500/10 text-indigo-300 font-bold hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 active:translate-y-px transition-all flex items-center gap-2"
+              aria-label="Ask my AI chatbot about me"
+            >
+              <Icons.chat size={18} />
+              Ask my AI
+              <Icons.externalLink size={15} />
             </a>
             
             <div className="flex gap-4">

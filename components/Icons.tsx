@@ -18,7 +18,8 @@ import {
   User,
   Database,
   Cloud,
-  ImageIcon
+  ImageIcon,
+  MessageCircle
 } from 'lucide-react';
 
 export const Icons = {
@@ -42,5 +43,6 @@ export const Icons = {
   user: User,
   database: Database,
   cloud: Cloud,
-  image: ImageIcon
+  image: ImageIcon,
+  chat: MessageCircle
 };

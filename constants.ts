@@ -18,6 +18,7 @@ import rentigoApp1 from "./assets/thumbnails/2_rentigo.co.uk.png";
 // NOTE: Replace this URL with your actual image URL after hosting the image, or import a local asset.
 // For now, using a placeholder that represents a professional avatar.
 export const PROFILE_IMAGE_URL = profileImg;
+export const CHATBOT_URL = "https://qualzo.app/chat/cms4h6qda0247jqymkzdnh6lk";
 
 export const PROFILE: Profile = {
   name: "Muhammad Wahaj",

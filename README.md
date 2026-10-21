@@ -1,20 +1,44 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Muhammad Wahaj — Portfolio
 
-# Run and deploy your AI Studio app
+Personal portfolio of Muhammad Wahaj, software developer (PHP, Node.js, Go, React).
 
-This contains everything you need to run your app locally.
+**Live site:** https://portfolio.by-wahaj.workers.dev
 
-View your app in AI Studio: https://ai.studio/apps/drive/1GLaRRh_fKSr0sfADgxi1S37KE49l_f48
+## Stack
 
-## Run Locally
+- React 19 + TypeScript, built with Vite
+- [motion](https://motion.dev) for scroll reveals
+- [lucide-react](https://lucide.dev) icons
+- Plain CSS driven by design tokens, no CSS framework
+- Type: Instrument Serif and Geist (Google Fonts)
 
-**Prerequisites:**  Node.js
+## Run locally
 
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Start the dev server (http://localhost:3000):
    `npm run dev`
+
+Other scripts:
+
+- `npm run build` — production build into `dist/`
+- `npm run preview` — serve the production build locally
+
+## Project layout
+
+| Path | Purpose |
+| --- | --- |
+| `constants.ts` | All site content: profile, experience, projects, skills, education |
+| `tokens.css` | Design tokens: colour, type, spacing, motion |
+| `index.css` | Page styles, built on the tokens |
+| `App.tsx` | Page shell: nav, sections, footer |
+| `components/` | Hero, project index, experience, stack, image viewer |
+| `assets/` | Profile photo and project screenshots |
+
+To update the portfolio, edit `constants.ts`; the layout reads everything from there.
+
+## Design
+
+Editorial layout designed with the [Hallmark](https://github.com/Nutlope/hallmark) skill. To restyle, change the values in `tokens.css`.

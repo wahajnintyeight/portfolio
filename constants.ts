@@ -14,6 +14,7 @@ import convertYTThumb from "./assets/thumbnails/logo_convertyt.png";
 import convertYTApp1 from "./assets/thumbnails/2_convertyt.png";
 import rentigoThumb from "./assets/thumbnails/1_rentigo.co.uk.png";
 import rentigoApp1 from "./assets/thumbnails/2_rentigo.co.uk.png";
+import projembleThumb from "./assets/thumbnails/projemble-home.png";
 
 // NOTE: Replace this URL with your actual image URL after hosting the image, or import a local asset.
 // For now, using a placeholder that represents a professional avatar.
@@ -81,6 +82,20 @@ export const EXPERIENCE: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    id: "projemble",
+    title: "Projemble - Go Project Scaffolder",
+    techStack: ["Go", "gotui", "Goldmark", "YAML", "LLM APIs"],
+    location: "Open source",
+    period: "2026 - Present",
+    url: "https://projemble.by-wahaj.workers.dev/",
+    description: [
+      "Built a Go CLI/TUI that scaffolds projects from explicit workloads, application patterns, architectures, and verified templates.",
+      "Supports HTTP APIs, CLI tools, jobs, background workers, and Go libraries, with architectures selected to fit each workload.",
+      "Keeps local scaffolding usable without an AI provider, with optional agent-assisted implementation and saved project sessions."
+    ],
+    images: [projembleThumb]
+  },
   {
     id: "rentigo",
     title: "Rentigo - Property Management Platform",

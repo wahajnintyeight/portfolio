@@ -1,65 +1,55 @@
 import React from 'react';
 import { CHATBOT_URL, PROFILE, PROFILE_IMAGE_URL } from '../constants';
+import { MetricsGrid } from './MetricsGrid';
 import { Icons } from './Icons';
 
 export const Hero: React.FC = () => {
-  const [first, ...rest] = PROFILE.name.split(' ');
   const email = PROFILE.socials.find((s) => s.platform === 'Email');
+  const technologies = PROFILE.role.split('|').slice(1).map((item) => item.trim());
 
   return (
     <section className="hero wrap" aria-labelledby="hero-name">
-      <p className="hero__status">
-        <span className="hero__dot" aria-hidden="true" />
-        Available for new opportunities
-      </p>
+      <div className="hero__intro">
+        <p className="hero__status">
+          <span className="hero__dot" aria-hidden="true" />
+          Available for new opportunities
+        </p>
 
-      <h1 className="hero__name" id="hero-name">
-        <span className="hero__line"><span>{first}</span></span>
-        <span className="hero__line"><span>{rest.join(' ')}</span></span>
-      </h1>
+        <h1 className="hero__name" id="hero-name">{PROFILE.name}</h1>
+        <p className="hero__role">{PROFILE.role.split('|')[0].trim()}</p>
+        <p className="hero__lede">{PROFILE.summary}</p>
 
-      <hr className="hero__rule" />
-
-      <div className="hero__body">
-        <div>
-          <p className="hero__lede">{PROFILE.summary}</p>
-          <div className="hero__actions">
-            <a href="#work" className="link">See selected work</a>
-            <a
-              href={CHATBOT_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="link link--accent"
-              aria-label="Ask my AI chatbot about me (opens in a new tab)"
-            >
-              Ask my AI
-              <Icons.externalLink size={14} aria-hidden="true" />
-            </a>
-          </div>
+        <div className="hero__actions">
+          <a href="#work" className="hero__button hero__button--primary">Explore my work</a>
+          {email && <a href={email.url} className="hero__button hero__button--quiet">Get in touch</a>}
+          <a
+            href={CHATBOT_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="hero__button hero__button--quiet"
+            aria-label="Ask my AI chatbot about me (opens in a new tab)"
+          >
+            Ask my AI
+            <Icons.externalLink size={14} aria-hidden="true" />
+          </a>
         </div>
+      </div>
 
-        <dl className="hero__facts">
-          <div>
-            <dt>Role</dt>
-            <dd>{PROFILE.role}</dd>
-          </div>
-          <div>
-            <dt>Based in</dt>
-            <dd>{PROFILE.location}</dd>
-          </div>
-          {email && (
-            <div>
-              <dt>Write to</dt>
-              <dd><a className="link" href={email.url}>{email.display}</a></dd>
-            </div>
-          )}
-        </dl>
-
+      <div className="hero__stage">
+        <p className="hero__fact hero__fact--location">
+          <span>Based in</span>
+          {PROFILE.location}
+        </p>
         <figure className="hero__portrait">
           <img src={PROFILE_IMAGE_URL} alt={`Portrait of ${PROFILE.name}`} width={640} height={800} />
-          <figcaption>{PROFILE.location}</figcaption>
         </figure>
+        <p className="hero__fact hero__fact--focus">
+          <span>Working with</span>
+          {technologies.join(' / ')}
+        </p>
       </div>
+
+      <MetricsGrid />
     </section>
   );
 };

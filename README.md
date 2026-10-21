@@ -32,7 +32,8 @@ Other scripts:
 | --- | --- |
 | `constants.ts` | All site content: profile, experience, projects, skills, education |
 | `tokens.css` | Design tokens: colour, type, spacing, motion |
-| `index.css` | Page styles, built on the tokens |
+| `index.css` | Shared base styles |
+| `workbench.css` | Dark Workbench portfolio layout, built on the tokens |
 | `App.tsx` | Page shell: nav, sections, footer |
 | `components/` | Hero, project index, experience, stack, image viewer |
 | `assets/` | Profile photo and project screenshots |
@@ -41,4 +42,4 @@ To update the portfolio, edit `constants.ts`; the layout reads everything from t
 
 ## Design
 
-Editorial layout designed with the [Hallmark](https://github.com/Nutlope/hallmark) skill. To restyle, change the values in `tokens.css`.
+Dark Workbench layout designed with the [Hallmark](https://github.com/Nutlope/hallmark) skill. To restyle, change the values in `tokens.css`.

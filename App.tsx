@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
 import { Hero } from './components/Hero';
 import { ExperienceList } from './components/ExperienceList';
 import { ProjectSlider } from './components/ProjectSlider';
 import { SkillCloud } from './components/SkillCloud';
 import { Section } from './components/Section';
-import { EDUCATION, PROFILE, PROFILE_IMAGE_URL } from './constants';
-import { Icons } from './components/Icons';
+import { CHATBOT_URL, EDUCATION, PROFILE } from './constants';
 import { trackVisit } from './lib/trackVisit';
 
 export default function App() {
@@ -14,114 +14,78 @@ export default function App() {
     trackVisit();
   }, []);
 
+  const email = PROFILE.socials.find((s) => s.platform === 'Email');
+
   return (
-    <main className="min-h-screen bg-[#050505] text-zinc-300 selection:bg-indigo-500/30 font-sans">
-      
-      {/* Background Decor */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
-      </div>
+    <MotionConfig reducedMotion="user">
+      <a href="#work" className="skip">Skip to work</a>
 
-      {/* Top Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-50"></div>
-      
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-12 pb-32">
-        
-        {/* Navigation / Header */}
-        <header className="flex justify-between items-center py-8 mb-12">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-zinc-800 bg-zinc-900">
-              <img 
-                src={PROFILE_IMAGE_URL} 
-                alt={PROFILE.name} 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <span className="text-white font-bold tracking-tight hidden sm:block">
-              {PROFILE.name}
-            </span>
-          </div>
-          
-          <nav className="flex items-center gap-8">
-            <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-500">
-              <a href="#experience" className="hover:text-white transition-colors">Experience</a>
-              <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-              <a href="#skills" className="hover:text-white transition-colors">Skills</a>
-            </div>
-            <div className="h-4 w-[1px] bg-zinc-800 hidden md:block" />
-            <div className="flex gap-4">
-               {PROFILE.socials.map(s => {
-                  const Icon = Icons[s.icon as keyof typeof Icons];
-                  return (
-                    <a 
-                      key={s.platform} 
-                      href={s.url} 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-zinc-500 hover:text-white transition-colors"
-                      aria-label={s.platform}
-                    >
-                      {Icon && <Icon size={20} />}
-                    </a>
-                  )
-               })}
-            </div>
+      <header className="nav">
+        <div className="wrap nav__row">
+          <a href="#top" className="nav__mark">{PROFILE.name}</a>
+          <nav className="nav__links" aria-label="Sections">
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Stack</a>
+            <a href="#contact">Contact</a>
           </nav>
-        </header>
+          <a className="nav__cta link" href={CHATBOT_URL} target="_blank" rel="noreferrer">Ask my AI</a>
+        </div>
+      </header>
 
-        <Section delay={100}>
-          <Hero />
+      <main id="top">
+        <Hero />
+
+        <Section id="work">
+          <ProjectSlider />
         </Section>
 
-        <div className="space-y-48 mt-20">
-          
-          <Section delay={200} id="experience">
-            <ExperienceList />
-          </Section>
+        <Section id="experience">
+          <ExperienceList />
+        </Section>
 
-          <Section delay={300} id="projects">
-            <ProjectSlider />
-          </Section>
+        <Section id="skills">
+          <SkillCloud />
+        </Section>
 
-          <Section delay={400} id="skills">
-            <SkillCloud />
-          </Section>
+        <Section id="education">
+          <div className="sect wrap">
+            <header className="sect__head">
+              <h2 className="sect__title">Education</h2>
+            </header>
+            <div className="ledger">
+              <article className="ledger__row">
+                <p className="ledger__when">{EDUCATION.period}</p>
+                <div>
+                  <h3 className="ledger__role">{EDUCATION.institution}</h3>
+                  <p className="ledger__org"><span>{EDUCATION.location}</span></p>
+                </div>
+                <p>{EDUCATION.degree}</p>
+              </article>
+            </div>
+          </div>
+        </Section>
+      </main>
 
-          <Section delay={500} id="education">
-             <div className="flex items-center gap-3 mb-12">
-                <Icons.education className="text-indigo-400" size={24} />
-                <h2 className="text-3xl font-bold text-white">Education</h2>
-              </div>
-              <div className="group bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl flex flex-col sm:flex-row justify-between sm:items-center hover:border-zinc-700 transition-all">
-                  <div>
-                    <h3 className="text-2xl font-bold text-zinc-100 mb-1">{EDUCATION.institution}</h3>
-                    <p className="text-zinc-400 text-lg">{EDUCATION.degree}</p>
-                  </div>
-                  <div className="mt-6 sm:mt-0 text-left sm:text-right">
-                    <span className="block text-zinc-300 font-medium mb-1">{EDUCATION.location}</span>
-                    <span className="inline-block px-3 py-1 rounded-full bg-zinc-800 text-xs font-mono text-zinc-500">
-                      {EDUCATION.period}
-                    </span>
-                  </div>
-              </div>
-          </Section>
+      <footer className="foot" id="contact">
+        <div className="wrap">
+          <p className="foot__lead">Let's build something.</p>
+          {email && <a className="foot__mail" href={email.url}>{email.display}</a>}
 
+          <nav className="foot__links" aria-label="Elsewhere">
+            {PROFILE.socials.filter((s) => s.platform !== 'Email').map((s) => (
+              <a key={s.platform} href={s.url} target={s.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+                {s.platform}
+              </a>
+            ))}
+          </nav>
+
+          <div className="foot__base">
+            <span>© {new Date().getFullYear()} {PROFILE.name}</span>
+            <a href="#top">Back to top</a>
+          </div>
         </div>
-
-        {/* Footer */}
-        <footer className="mt-48 border-t border-zinc-900 pt-16 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-zinc-500 text-sm">
-            <p>© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</p>
-          </div>
-          
-          <div className="flex gap-8 text-sm font-medium text-zinc-500">
-            <a href="#" className="hover:text-white transition-colors">Back to top</a>
-            <a href="mailto:alex@example.com" className="hover:text-white transition-colors">Contact</a>
-          </div>
-        </footer>
-
-      </div>
-    </main>
+      </footer>
+    </MotionConfig>
   );
 }

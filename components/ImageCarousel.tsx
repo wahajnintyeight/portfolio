@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Icons } from './Icons';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -8,18 +7,20 @@ interface ImageCarouselProps {
   initialIndex?: number;
 }
 
-export const ImageCarousel: React.FC<ImageCarouselProps> = ({ 
-  images, 
-  isOpen, 
-  onClose, 
-  initialIndex = 0 
+export const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  images,
+  isOpen,
+  onClose,
+  initialIndex = 0
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       setCurrentIndex(initialIndex);
       document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      closeRef.current?.focus({ preventScroll: true });
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -52,65 +53,26 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8">
-       
-      {/* Close Button */}
-      <button 
-        onClick={onClose}
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 p-3 rounded-full bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-700/80 transition-colors z-50"
-      >
-        <Icons.close size={28} />
-      </button>
+    <div className="lightbox" role="dialog" aria-modal="true" aria-label="Project screenshots">
+      <div className="lightbox__bar">
+        <span>{currentIndex + 1} / {images.length}</span>
+        <button ref={closeRef} className="lightbox__btn" onClick={onClose}>Close</button>
+      </div>
 
-      {/* Navigation - Left */}
+      <div className="lightbox__stage" onClick={onClose}>
+        <img
+          src={images[currentIndex]}
+          alt={`Project screenshot ${currentIndex + 1} of ${images.length}`}
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+
       {images.length > 1 && (
-        <button 
-          onClick={(e) => { e.stopPropagation(); prevImage(); }}
-          className="absolute left-4 sm:left-8 p-3 rounded-full bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-700/80 transition-colors z-50"
-        >
-          <Icons.arrowLeft size={36} />
-        </button>
-      )}
-
-      {/* Main Image */}
-      <div className="w-full h-full p-8 sm:p-16 flex items-center justify-center" onClick={onClose}>
-        <div 
-            className="relative w-full h-full flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-        >
-          <img 
-            src={images[currentIndex]} 
-            alt={`Project screenshot ${currentIndex + 1}`} 
-            className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-          />
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 backdrop-blur rounded-full text-white text-sm font-medium">
-             {currentIndex + 1} / {images.length}
-          </div>
+        <div className="lightbox__nav">
+          <button className="lightbox__btn" onClick={prevImage}>Previous</button>
+          <button className="lightbox__btn" onClick={nextImage}>Next</button>
         </div>
-      </div>
-
-      {/* Navigation - Right */}
-      {images.length > 1 && (
-        <button 
-          onClick={(e) => { e.stopPropagation(); nextImage(); }}
-          className="absolute right-4 sm:right-8 p-3 rounded-full bg-zinc-800/50 text-zinc-400 hover:text-white hover:bg-zinc-700/80 transition-colors z-50"
-        >
-          <Icons.arrowRight size={36} />
-        </button>
       )}
-
-      {/* Thumbnails (Optional, minimal version) */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-40">
-        {images.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              idx === currentIndex ? 'bg-white w-6' : 'bg-zinc-600 hover:bg-zinc-500'
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 };

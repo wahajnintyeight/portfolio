@@ -1,0 +1,27 @@
+.site-header { background: var(--background); }
+.site-header__row { display: flex; align-items: center; gap: 1.5rem; min-height: 5.5rem; }
+.wordmark { margin-right: auto; font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; letter-spacing: -0.035em; line-height: 1.2; }
+.wordmark > span { color: var(--accent); }
+.section-nav ul { display: flex; gap: 0.25rem; align-items: center; }
+.section-nav li:last-child { display: none; }
+.section-nav a { position: relative; display: flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; padding: 0.4rem 1.1rem; border-radius: 99px; color: var(--muted); font-size: 0.9375rem; }
+.section-nav svg { display: none; }
+.section-nav a:hover, .section-nav a[aria-current] { background: var(--surface); color: var(--foreground); }
+.contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; min-height: 2.9rem; margin-left: 0.5rem; padding: 0.55rem 1.3rem; border: 0; border-radius: 99px; background: var(--foreground); color: var(--background); font-size: 0.9375rem; font-weight: 500; }
+.contact-button:hover { background: color-mix(in srgb, var(--foreground) 85%, var(--accent)); }
+.contact-button svg { transition: transform 180ms var(--ease-out); }
+.contact-button:hover svg { transform: translate(2px, -2px); }
+@media (max-width: 47.99rem) {
+  body { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+  .site-header__row { min-height: 4rem; gap: 0.75rem; }
+  .wordmark { font-size: 1.75rem; }
+  .site-header .contact-button { min-width: 2.75rem; min-height: 2.75rem; padding: 0.5rem; margin: 0; }
+  .site-header .contact-button span { display: none; }
+  .section-nav { position: fixed; z-index: 40; inset: auto 0.75rem max(0.75rem, env(safe-area-inset-bottom)); padding: 0.35rem; border-radius: 24px; background: var(--surface); box-shadow: 0 8px 28px rgb(0 0 0 / 0.25); }
+  .section-nav ul { justify-content: space-around; gap: 0; }
+  .section-nav li { flex: 1; min-width: 0; }
+  .section-nav li:last-child { display: block; }
+  .section-nav a { flex-direction: column; justify-content: center; gap: 0.3rem; min-height: 3.75rem; padding: 0.4rem; border-radius: 18px; font-size: 0.75rem; }
+  .section-nav a:hover, .section-nav a[aria-current] { background: var(--slate); }
+  .section-nav svg { display: block; }
+}

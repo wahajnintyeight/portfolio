@@ -12,6 +12,7 @@ import {
   ChevronRight, 
   X,
   ArrowUp,
+  ArrowDown,
   Cpu,
   Globe,
   Layers,
@@ -21,7 +22,9 @@ import {
   Cloud,
   ImageIcon,
   MessageCircle,
-  Activity
+  Activity,
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 
 export const Icons = {
@@ -38,6 +41,7 @@ export const Icons = {
   arrowLeft: ChevronLeft,
   arrowRight: ChevronRight,
   arrowUp: ArrowUp,
+  arrowDown: ArrowDown,
   close: X,
   cpu: Cpu,
   globe: Globe,
@@ -48,5 +52,7 @@ export const Icons = {
   cloud: Cloud,
   image: ImageIcon,
   chat: MessageCircle,
-  activity: Activity
+  activity: Activity,
+  projectArrow: ArrowUpRight,
+  sparkles: Sparkles
 };

@@ -1,121 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PROJECTS } from '../constants';
+import { Project } from '../types';
 import { ImageCarousel } from './ImageCarousel';
+import { ProjectScene } from './ProjectScene';
 import { Icons } from './Icons';
+import { getTabIndex } from '../lib/tabNavigation';
 
 export const ProjectGrid: React.FC = () => {
-  const [carouselOpen, setCarouselOpen] = useState(false);
-  const [selectedProjectImages, setSelectedProjectImages] = useState<string[]>([]);
-  const [initialImageIndex, setInitialImageIndex] = useState(0);
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
-  const selectedProject = PROJECTS[selectedProjectIndex];
+  const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const openGallery = (project: Project, index = 0) => setGallery({ project, index });
+  const project = PROJECTS[activeIndex];
 
-  const openCarousel = (images: string[], index = 0) => {
-    if (!images.length) return;
-    setSelectedProjectImages(images);
-    setInitialImageIndex(index);
-    setCarouselOpen(true);
+  useEffect(() => {
+    const selectLinkedProject = () => {
+      const index = PROJECTS.findIndex((item) => window.location.hash === `#project-${item.id}`);
+      if (index >= 0) {
+        setActiveIndex(index);
+        tabRefs.current[index]?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    };
+    selectLinkedProject();
+    window.addEventListener('hashchange', selectLinkedProject);
+    return () => window.removeEventListener('hashchange', selectLinkedProject);
+  }, []);
+
+  const onTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const next = getTabIndex(event.key, index, PROJECTS.length);
+    if (next === undefined) return;
+    event.preventDefault();
+    setActiveIndex(next);
+    tabRefs.current[next]?.focus({ preventScroll: true });
+    tabRefs.current[next]?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  };
+
+  const move = (offset: number) => {
+    const next = (activeIndex + offset + PROJECTS.length) % PROJECTS.length;
+    setActiveIndex(next);
+    tabRefs.current[next]?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
 
   return (
-    <div className="sect wrap">
-      <header className="sect__head">
-        <h2 className="sect__title">Selected work</h2>
-        <p className="sect__note">Choose a project to inspect its screens, implementation notes and stack.</p>
-      </header>
-
-      <div className="workbench">
-        <nav className="workbench__index" aria-label="Project index">
-          {PROJECTS.map((project, index) => (
-            <button
-              className="workbench__item"
-              type="button"
-              key={project.id}
-              aria-pressed={selectedProjectIndex === index}
-              aria-controls="workbench-panel"
-              onClick={() => setSelectedProjectIndex(index)}
-            >
-              <span className="workbench__name">{project.title.split(' - ')[0]}</span>
-              <span className="workbench__stack">{project.techStack.slice(0, 2).join(' · ')}</span>
-            </button>
-          ))}
-        </nav>
-
-        <article className="workbench__panel" id="workbench-panel">
-          <header className="workbench__panel-head">
-            <h3 className="workbench__title" aria-live="polite">{selectedProject.title}</h3>
-            <p className="workbench__meta">
-              <span>{selectedProject.period.replace(' - ', ' – ')}</span>
-              <span>{selectedProject.location}</span>
-            </p>
-            {selectedProject.url && (
-              <a className="workbench__site" href={selectedProject.url} target="_blank" rel="noreferrer">
-                Visit live site <Icons.externalLink size={14} aria-hidden="true" />
-              </a>
-            )}
-          </header>
-
-          <div className="workbench__body">
-            {selectedProject.images[0] && (
-              <div className="workbench__visual">
-                <figure className="workbench__figure">
-                  <button
-                    className="workbench__shot"
-                    type="button"
-                    onClick={() => openCarousel(selectedProject.images)}
-                    aria-label={`Open ${selectedProject.title} screenshots`}
-                  >
-                    <img
-                      src={selectedProject.images[0]}
-                      alt={`${selectedProject.title} screen 1`}
-                      width={1280}
-                      height={800}
-                      loading="lazy"
-                    />
-                  </button>
-                  <figcaption className="workbench__caption">
-                    <span>Screen 01 / {String(selectedProject.images.length).padStart(2, '0')}</span>
-                    <span>Open to inspect <Icons.externalLink size={13} aria-hidden="true" /></span>
-                  </figcaption>
-                </figure>
-
-                {selectedProject.images.length > 1 && (
-                  <nav className="workbench__thumbs" aria-label={`${selectedProject.title} screenshots`}>
-                    {selectedProject.images.map((image, index) => (
-                      <button
-                        key={image}
-                        type="button"
-                        onClick={() => openCarousel(selectedProject.images, index)}
-                        aria-label={`Open screenshot ${index + 1} of ${selectedProject.images.length}`}
-                      >
-                        <img src={image} alt="" width={1280} height={800} loading="lazy" />
-                      </button>
-                    ))}
-                  </nav>
-                )}
-              </div>
-            )}
-
-            <div className="workbench__details">
-              <ul className="workbench__description">
-                {selectedProject.description.map((detail) => <li key={detail}>{detail}</li>)}
-              </ul>
-              <div className="workbench__details-stack">
-                <p className="workbench__stack-label">Built with</p>
-                <ul aria-label="Technology stack">
-                  {selectedProject.techStack.map((technology) => <li key={technology}>{technology}</li>)}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </article>
+    <div className="wrap work-gallery">
+      <div className="showcase-heading">
+        <h2>Things I’ve built<span>.</span></h2>
+        <div className="showcase-pager" aria-label="Browse projects">
+          <span>{activeIndex + 1}<span> / {PROJECTS.length}</span></span>
+          <button type="button" onClick={() => move(-1)} aria-label="Previous project"><Icons.arrowLeft size={21} aria-hidden="true" /></button>
+          <button type="button" onClick={() => move(1)} aria-label="Next project"><Icons.arrowRight size={21} aria-hidden="true" /></button>
+        </div>
       </div>
-
+      <div className="project-navigator" role="tablist" aria-label="Choose a project">
+        {PROJECTS.map((item, index) => (
+          <button key={item.id} id={`project-${item.id}`} role="tab" type="button"
+            ref={(element) => { tabRefs.current[index] = element; }}
+            aria-selected={index === activeIndex} aria-controls="project-panel" tabIndex={index === activeIndex ? 0 : -1}
+            onClick={() => setActiveIndex(index)} onKeyDown={(event) => onTabKeyDown(event, index)}>
+            <img src={item.images[0]} alt="" width={160} height={90} loading="lazy" />
+            <span>{item.title.split(' - ')[0]}</span>
+          </button>
+        ))}
+      </div>
+      <div id="project-panel" role="tabpanel" aria-labelledby={`project-${project.id}`} tabIndex={0}>
+        <ProjectScene key={project.id} project={project} onOpenImages={openGallery} />
+      </div>
       <ImageCarousel
-        images={selectedProjectImages}
-        isOpen={carouselOpen}
-        onClose={() => setCarouselOpen(false)}
-        initialIndex={initialImageIndex}
+        images={gallery?.project.images ?? []}
+        title={gallery?.project.title}
+        isOpen={gallery !== null}
+        initialIndex={gallery?.index ?? 0}
+        onClose={() => setGallery(null)}
       />
     </div>
   );

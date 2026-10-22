@@ -1,51 +1,23 @@
-/* Portfolio palette and type scale: graphite surfaces, off-white text, signal mint accents. */
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/outfit-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
 :root {
-  --color-paper:      oklch(12% 0.014 255);
-  --color-paper-2:    oklch(16% 0.017 255);
-  --color-paper-3:    oklch(20% 0.018 255);
-  --color-rule:       oklch(29% 0.018 255);
-  --color-muted:      oklch(78% 0.02 255);
-  --color-ink:        oklch(95% 0.01 255);
-  --color-ink-2:      oklch(83% 0.012 255);
-  --color-ink-muted:  oklch(78% 0.018 255);
-  --color-accent:     oklch(78% 0.17 148);
-  --color-accent-ink: oklch(16% 0.02 148);
-  --color-focus:      oklch(84% 0.15 148);
-
-  --font-display: "Space Grotesk", "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-body:    "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-outlier: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
-
-  --space-3xs: 0.25rem;
-  --space-2xs: 0.5rem;
-  --space-xs:  0.75rem;
-  --space-sm:  1rem;
-  --space-md:  1.5rem;
-  --space-lg:  2rem;
-  --space-xl:  3rem;
-  --space-2xl: 4.5rem;
-  --space-3xl: 7rem;
-
-  --text-xs:  0.8125rem;
-  --text-sm:  0.9375rem;
-  --text-md:  1rem;
-  --text-lg:  1.25rem;
-  --text-xl:  clamp(1.5rem, 1.2rem + 1vw, 2rem);
-  --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-  --text-display: clamp(3rem, 8vw, 6rem);
-
-  --gutter: clamp(1.25rem, 4vw, 4rem);
-  --measure: 68ch;
-
-  --rule-hair:  1px solid var(--color-rule);
-  --rule-thick: 1px solid var(--color-rule);
-
-  --radius-sm: 12px;
-
-  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro: 120ms;
-  --dur-short: 220ms;
-  --dur-long:  420ms;
+  color-scheme: dark;
+  --background: #0d1422;
+  --surface: #18263b;
+  --slate: #344b68;
+  --accent: #91b6e6;
+  --foreground: #e3ebf5;
+  --text: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 78%, var(--surface));
+  --rule: color-mix(in srgb, var(--slate) 70%, var(--background));
+  --portrait-filter: brightness(0.86) contrast(1.04) saturate(0.94);
+  --font-body: "Outfit", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --gutter: clamp(1rem, 4.5vw, 4.5rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }

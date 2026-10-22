@@ -1,6 +1,5 @@
 import { Experience, Profile, Project, SkillCategory } from "./types";
-import hostVaultImg from "./assets/thumbnails/hostvault.svg";
-import profileImg from "./assets/cropped_1.jpg";
+import profileImg from "./assets/profile-cutout.png";
 import hostVaultApp1 from "./assets/thumbnails/2_hostvault.png";
 import hostVaultApp2 from "./assets/thumbnails/1_hostvault.png";
 import team2challengeApp1 from "./assets/thumbnails/1_www.team2challenge.ch.png";
@@ -15,9 +14,8 @@ import convertYTApp1 from "./assets/thumbnails/2_convertyt.png";
 import rentigoThumb from "./assets/thumbnails/1_rentigo.co.uk.png";
 import rentigoApp1 from "./assets/thumbnails/2_rentigo.co.uk.png";
 import projembleThumb from "./assets/thumbnails/projemble-home.png";
+import projembleSite from "./assets/thumbnails/projemble-site.png";
 
-// NOTE: Replace this URL with your actual image URL after hosting the image, or import a local asset.
-// For now, using a placeholder that represents a professional avatar.
 export const PROFILE_IMAGE_URL = profileImg;
 export const CHATBOT_URL = "https://qualzo.app/chat/cms4h6qda0247jqymkzdnh6lk";
 
@@ -85,6 +83,7 @@ export const PROJECTS: Project[] = [
   {
     id: "projemble",
     title: "Projemble - Go Project Scaffolder",
+    summary: "Go project scaffolder",
     techStack: ["Go", "gotui", "Goldmark", "YAML", "LLM APIs"],
     location: "Open source",
     period: "2026 - Present",
@@ -94,11 +93,12 @@ export const PROJECTS: Project[] = [
       "Supports HTTP APIs, CLI tools, jobs, background workers, and Go libraries, with architectures selected to fit each workload.",
       "Keeps local scaffolding usable without an AI provider, with optional agent-assisted implementation and saved project sessions."
     ],
-    images: [projembleThumb]
+    images: [projembleSite, projembleThumb]
   },
   {
     id: "rentigo",
     title: "Rentigo - Property Management Platform",
+    summary: "Property management",
     techStack: ["Laravel", "Livewire", "MySQL", "Stripe", "DocuSign", "GoCardless"],
     location: "Global",
     period: "2023 - Present",
@@ -115,6 +115,7 @@ export const PROJECTS: Project[] = [
   {
     id: "hostvault",
     title: "Host Vault - Secure SSH Manager",
+    summary: "Secure SSH workspace",
     techStack: ["Go", "React", "TypeScript", "Wails", "Zustand"],
     location: "Global",
     period: "2024 - Present",
@@ -131,6 +132,7 @@ export const PROJECTS: Project[] = [
   {
     id: "convertyt",
     title: "ConvertYT - Modern Video Downloader",
+    summary: "Mobile video downloader",
     techStack: ["React Native", "TypeScript", "Reanimated", "YouTube API"],
     location: "Global",
     period: "2025 - Present",
@@ -140,13 +142,14 @@ export const PROJECTS: Project[] = [
       "Developed a comprehensive download system supporting multiple formats (MP4, MP3, WEBM) and qualities (144p to 4K) with background progress tracking."
     ],
     images: [
-        convertYTThumb,
-        convertYTApp1
+        convertYTApp1,
+        convertYTThumb
     ]
   },
   {
     id: "team2challenge",
     title: "Team2Challenge - Multi-Tenant Sports Management",
+    summary: "Sports & event management",
     techStack: ["NestJS", "TypeScript", "PostgreSQL", "RabbitMQ", "AWS"],
     location: "Lahore, Pakistan",
     period: "06/2025 - Current",
@@ -163,6 +166,7 @@ export const PROJECTS: Project[] = [
   {
     id: "sightflow",
     title: "Sightflow - AI Support Assistant Platform",
+    summary: "AI support assistants",
     techStack: ["Laravel", "React", "Python", "Gemini 2.0", "Pinecone", "AWS"],
     location: "Lahore, Pakistan",
     period: "12/2024 - 06/2025",
@@ -179,6 +183,7 @@ export const PROJECTS: Project[] = [
   {
     id: "fundreef",
     title: "Fundreef - Startup-Investor Marketplace",
+    summary: "Startup & investor marketplace",
     techStack: ["Laravel", "Livewire", "MySQL", "Meilisearch", "Stripe", "Gemini AI"],
     location: "Global",
     period: "2024 - Present",

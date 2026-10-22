@@ -1,3 +1,21 @@
 [
+  {
+    "date": "2026-10-21",
+    "macrostructure": "Workbench",
+    "theme": "custom",
+    "theme_axes": "dark / geometric sans / signal mint",
+    "vibe": "graphite, signal mint, technical, restrained",
+    "enrichment": "none",
+    "brief": "2026 developer portfolio redesign with screenshot-led project work"
+  },
+  {
+    "date": "2026-10-21",
+    "macrostructure": "Portfolio Grid",
+    "theme": "custom",
+    "theme_axes": "dark / geometric-sans / amber",
+    "vibe": "charcoal, amber, personal, precise",
+    "enrichment": "none",
+    "brief": "Dark portfolio redesign inspired by a centered digital resume profile and project grid"
+  },
   { "date": "2026-10-21", "macrostructure": "Marquee Hero + Index-First", "theme": "custom", "theme_axes": "light / classical-serif / warm", "vibe": "warm paper, vermilion, editorial", "enrichment": "none", "brief": "Muhammad Wahaj · developer portfolio redesign" }
 ]

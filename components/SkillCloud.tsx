@@ -1,26 +1,22 @@
 import React from 'react';
 import { SKILLS } from '../constants';
+import { Icons } from './Icons';
 
-export const SkillCloud: React.FC = () => {
-  return (
-    <div className="sect wrap">
-      <header className="sect__head">
-        <h2 className="sect__title">Technical stack</h2>
-        <p className="sect__note">The tools I reach for in production.</p>
-      </header>
+const GROUP_ICONS = [Icons.code, Icons.layers, Icons.database, Icons.cloud];
 
-      <dl className="stack">
-        {SKILLS.map((group) => (
-          <div key={group.category} className="stack__row">
-            <dt className="stack__cat">{group.category}</dt>
-            <dd>
-              <ul className="stack__list">
-                {group.skills.map((skill) => <li key={skill}>{skill}</li>)}
-              </ul>
-            </dd>
+export const SkillCloud: React.FC = () => (
+  <div className="section wrap toolkit">
+    <h2>What I build with<span>.</span></h2>
+    <dl className="stack">
+      {SKILLS.map((group, index) => {
+        const Icon = GROUP_ICONS[index] ?? Icons.code;
+        return (
+          <div key={group.category} className="stack__group">
+            <dt><Icon size={20} strokeWidth={1.6} aria-hidden="true" />{group.category}</dt>
+            <dd><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></dd>
           </div>
-        ))}
-      </dl>
-    </div>
-  );
-};
+        );
+      })}
+    </dl>
+  </div>
+);

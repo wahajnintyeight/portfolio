@@ -17,6 +17,7 @@ export interface Experience {
 export interface Project {
   id: string;
   title: string;
+  summary: string;
   techStack: string[];
   location: string;
   period: string;

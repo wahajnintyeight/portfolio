@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-21",
+  "scope": "single-page in-place redesign",
+  "target": "Muhammad Wahaj developer portfolio",
+  "findings": {
+    "project": "React 19 and Vite 6; no design.md or locked project design system",
+    "existingDesign": "Dark charcoal palette, amber accent, Space Grotesk and Geist fonts",
+    "content": "Profile, projects, work history, technical stack, education, contact links, and project screenshots are provided in the existing app",
+    "interactions": "Project screenshot lightbox supports Escape and arrow-key navigation; visit tracking runs on first mount; sections currently reveal on scroll",
+    "constraints": "Preserve existing information, section order, tracking, and screenshot lightbox; add no dependencies; remove scroll reveals for an immediate Workbench presentation"
+  },
+  "direction": {
+    "macrostructure": "Workbench",
+    "tone": "technical, restrained, readable",
+    "theme": "dark graphite with signal-mint accent",
+    "typography": "Space Grotesk and Geist; Geist Mono limited to wordmark and hero kicker",
+    "navigation": "N3 Side-rail on desktop; disclosure menu on smaller screens",
+    "footer": "Ft2 Inline-rule single line"
+  },
+  "research": [
+    "https://brittanychiang.com/",
+    "https://leerob.com/",
+    "https://rauno.me/",
+    "https://www.tarunpatel.online/apps/portfolio"
+  ],
+  "files": {
+    "modify": [
+      "App.tsx",
+      "components/Hero.tsx",
+      "components/ProjectGrid.tsx",
+      "tokens.css",
+      "README.md",
+      "index.html",
+      ".hallmark/log.json"
+    ],
+    "create": [".hallmark/preflight.json", "workbench.css"],
+    "delete": []
+  }
+}

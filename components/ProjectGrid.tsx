@@ -3,11 +3,13 @@ import { PROJECTS } from '../constants';
 import { Project } from '../types';
 import { ImageCarousel } from './ImageCarousel';
 import { ProjectScene } from './ProjectScene';
+import { ProjectOverview } from './ProjectOverview';
 import { Icons } from './Icons';
 import { getTabIndex } from '../lib/tabNavigation';
 
 export const ProjectGrid: React.FC = () => {
   const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null);
+  const [overviewProject, setOverviewProject] = useState<Project | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const openGallery = (project: Project, index = 0) => setGallery({ project, index });
@@ -63,8 +65,9 @@ export const ProjectGrid: React.FC = () => {
         ))}
       </div>
       <div id="project-panel" role="tabpanel" aria-labelledby={`project-${project.id}`} tabIndex={0}>
-        <ProjectScene key={project.id} project={project} onOpenImages={openGallery} />
+        <ProjectScene key={project.id} project={project} onOpenImages={openGallery} onOpenOverview={setOverviewProject} />
       </div>
+      <ProjectOverview project={overviewProject} onClose={() => setOverviewProject(null)} />
       <ImageCarousel
         images={gallery?.project.images ?? []}
         title={gallery?.project.title}

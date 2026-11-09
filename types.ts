@@ -22,6 +22,7 @@ export interface Project {
   location: string;
   period: string;
   url?: string;
+  overview: string;
   description: string[];
   images: string[];
 }

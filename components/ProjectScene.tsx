@@ -5,9 +5,10 @@ import { Icons } from './Icons';
 interface ProjectSceneProps {
   project: Project;
   onOpenImages: (project: Project, index?: number) => void;
+  onOpenOverview: (project: Project) => void;
 }
 
-export const ProjectScene: React.FC<ProjectSceneProps> = ({ project, onOpenImages }) => {
+export const ProjectScene: React.FC<ProjectSceneProps> = ({ project, onOpenImages, onOpenOverview }) => {
   const name = project.title.split(' - ')[0];
   const hasSecondView = project.images.length > 1 && project.id !== 'projemble';
 
@@ -29,14 +30,9 @@ export const ProjectScene: React.FC<ProjectSceneProps> = ({ project, onOpenImage
             <Icons.image size={18} aria-hidden="true" />Screenshots
           </button>
         </div>
-        <details className="showcase__details">
-          <summary>What I built<Icons.arrowRight size={17} aria-hidden="true" /></summary>
-          <div className="showcase__description">
-            <p>{project.period.replace(' - ', ' – ')} · {project.location}</p>
-            <ul>{project.description.map((detail) => <li key={detail}>{detail}</li>)}</ul>
-            <p>{project.techStack.join(' · ')}</p>
-          </div>
-        </details>
+        <button className="showcase__overview" type="button" onClick={() => onOpenOverview(project)}>
+          Project overview<Icons.arrowRight size={17} aria-hidden="true" />
+        </button>
       </div>
       <div className="project-scene">
         <span className="project-scene__word" aria-hidden="true">{name}</span>

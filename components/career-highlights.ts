@@ -6,13 +6,13 @@ interface CareerHighlight {
 
 export const CAREER_HIGHLIGHTS: Record<string, CareerHighlight[]> = {
   cynosure: [
-    { title: 'Product delivery', detail: 'Client-facing applications with PHP and React', icon: 'code' },
-    { title: 'Search at scale', detail: 'Elasticsearch across investor records', icon: 'database' },
-    { title: 'Connected systems', detail: 'Payments, live updates, and transcription', icon: 'layers' },
+    { title: 'Product delivery', detail: '30+ Laravel, Livewire, and React apps', icon: 'code' },
+    { title: 'User engagement', detail: '35% lift across 500+ users', icon: 'activity' },
+    { title: 'Connected systems', detail: 'RabbitMQ, WebSockets, AWS, and Stripe', icon: 'layers' },
   ],
   azure: [
-    { title: 'Responsive APIs', detail: 'Node.js services with Redis caching', icon: 'layers' },
-    { title: 'Location-aware services', detail: 'Geofencing and real-time notifications', icon: 'mapPin' },
-    { title: 'Live data streams', detail: 'Go, PostgreSQL, and MongoDB', icon: 'activity' },
+    { title: 'Faster APIs', detail: '50% lower latency with Node.js and Redis', icon: 'layers' },
+    { title: 'Quicker releases', detail: 'Deployments cut from 45 to 12 minutes', icon: 'activity' },
+    { title: 'Live data streams', detail: '1,000+ concurrent GPS streams in Go', icon: 'mapPin' },
   ],
 };

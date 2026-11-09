@@ -4,8 +4,6 @@ import hostVaultApp1 from "./assets/thumbnails/2_hostvault.png";
 import hostVaultApp2 from "./assets/thumbnails/1_hostvault.png";
 import team2challengeApp1 from "./assets/thumbnails/1_www.team2challenge.ch.png";
 import team2challengeApp2 from "./assets/thumbnails/2_www.team2challenge.ch.png";
-import sightflowApp1 from "./assets/thumbnails/screenshot_app.getsightflow.com.png";
-import sightflowApp2 from "./assets/thumbnails/2_app.getsightflow.com.png";
 import fundreefThumb from "./assets/thumbnails/landing_www.fundreef.com.png";
 import fundreefApp1 from "./assets/thumbnails/1_app.fundreef.com.png";
 import fundreefApp2 from "./assets/thumbnails/2_app.fundreef.com.png";
@@ -15,6 +13,8 @@ import rentigoThumb from "./assets/thumbnails/1_rentigo.co.uk.png";
 import rentigoApp1 from "./assets/thumbnails/2_rentigo.co.uk.png";
 import projembleThumb from "./assets/thumbnails/projemble-home.png";
 import projembleSite from "./assets/thumbnails/projemble-site.png";
+import nokduSite from "./assets/thumbnails/nokdu-site.png";
+import fairytailSite from "./assets/thumbnails/fairytail-site.png";
 
 export const PROFILE_IMAGE_URL = profileImg;
 export const CHATBOT_URL = "https://qualzo.app/chat/cms4h6qda0247jqymkzdnh6lk";
@@ -23,7 +23,7 @@ export const PROFILE: Profile = {
   name: "Muhammad Wahaj",
   role: "Software Developer | PHP | NodeJs | Go | React",
   location: "Lahore, Pakistan",
-  summary: "Software Developer with 4+ years building high-performance PHP applications using Laravel/MVC frameworks, NodeJS & Go.",
+  summary: "Software Engineer with 7+ years building backend systems and high-performance APIs with PHP, Node.js, and Go.",
   socials: [
     {
       platform: "Email",
@@ -56,12 +56,12 @@ export const EXPERIENCE: Experience[] = [
   {
     id: "cynosure",
     company: "Cynosure Designs Ltd.",
-    role: "Software Developer",
+    role: "Senior Software Engineer",
     location: "Lahore, Pakistan",
-    period: "02/2023 – Present",
+    period: "02/2022 – 11/2026",
     achievements: [
-      "Designed, developed, and deployed 30+ client-facing applications using PHP (Laravel) and React with a focus on scalability.",
-      "Integrated Elasticsearch, reducing P95 load times by 40% for 900K+ investor records and improving search responsiveness.",
+      "Built 30+ client-facing web apps using Laravel, Livewire, and React, increasing engagement by 35% across 500+ users through responsive UIs and optimized queries.",
+      "Improved search and filtering performance through indexed queries and Elasticsearch-backed retrieval.",
       "Delivered production-ready features including RabbitMQ notifications, WebSocket streaming, AWS Lambda transcription, and Stripe payments, cutting delivery cycles by 40%."
     ]
   },
@@ -70,10 +70,10 @@ export const EXPERIENCE: Experience[] = [
     company: "Azure Innovations",
     role: "Software Developer",
     location: "Lahore, Pakistan",
-    period: "09/2021 – 12/2022",
+    period: "09/2019 – 12/2021",
     achievements: [
       "Built REST APIs in Node.js with Redis caching, reducing API latency by 50% for e-commerce transaction flows.",
-      "Built geofencing microservice using Redis Geospatial queries detecting zone entry/exit events and triggering real-time FCM push notification.",
+      "Automated CI/CD with AWS CodePipeline and CodeDeploy, reducing deployments from 45 minutes to 12 and adding automated rollback on failure.",
       "Developed a high-throughput GPS tracking service in Go, handling 1,000+ concurrent streams and reducing query latency by 65% across PostgreSQL, MongoDB, and Redis."
     ]
   }
@@ -88,6 +88,7 @@ export const PROJECTS: Project[] = [
     location: "Open source",
     period: "2026 - Present",
     url: "https://projemble.by-wahaj.workers.dev/",
+    overview: "A Go CLI/TUI that lets developers shape a project before they start coding: choose its workload, patterns, architecture, and verified templates. Agent-assisted implementation stays optional, so local scaffolding needs no AI provider.",
     description: [
       "Built a Go CLI/TUI that scaffolds projects from explicit workloads, application patterns, architectures, and verified templates.",
       "Supports HTTP APIs, CLI tools, jobs, background workers, and Go libraries, with architectures selected to fit each workload.",
@@ -96,12 +97,45 @@ export const PROJECTS: Project[] = [
     images: [projembleSite, projembleThumb]
   },
   {
+    id: "nokdu-comics",
+    title: "Nokdu Comics - Webtoon Platform",
+    summary: "Korean webtoons for Italian readers",
+    techStack: ["Next.js", "TypeScript", "PHP", "Stripe"],
+    location: "Italy",
+    period: "Ongoing",
+    url: "https://nokdu.eu/en",
+    overview: "A bilingual storefront for officially licensed Korean webtoons translated into Italian, with curated discovery, genre browsing, and an immersive vertical reader.",
+    description: [
+      "Built a bilingual storefront for officially licensed Korean webtoons translated into Italian, with genre browsing, curated picks, and new releases.",
+      "Created an immersive vertical-scroll reading experience that adapts across mobile and desktop.",
+      "Added flexible access through an unlimited subscription or individual chapter purchases."
+    ],
+    images: [nokduSite]
+  },
+  {
+    id: "fairytail-ai",
+    title: "Fairytail AI - Memory Film Studio",
+    summary: "Family photos into cinematic memory films",
+    techStack: ["React", "TypeScript", "PHP", "Stripe"],
+    location: "Digital product",
+    period: "Ongoing",
+    url: "https://fairytail.ai/",
+    overview: "A guided photo-to-film experience that turns family memories into narrated cinematic stories, with flexible one-time credits for creating a film.",
+    description: [
+      "Turned cherished family photos into short memory films with story, cinematic motion, narration, and music.",
+      "Built a guided creation flow from photo upload and story direction through generated scenes and a finished film.",
+      "Added flexible, one-time credit bundles so people can create films without a recurring subscription."
+    ],
+    images: [fairytailSite]
+  },
+  {
     id: "rentigo",
     title: "Rentigo - Property Management Platform",
     summary: "Property management",
     techStack: ["Laravel", "Livewire", "MySQL", "Stripe", "DocuSign", "GoCardless"],
     location: "Global",
     period: "2023 - Present",
+    overview: "A property management platform for rental and sales operations, bringing admins, landlords, tenants, and buyers into one connected workflow.",
     description: [
       "Built a comprehensive property management platform handling rental, sales, and international properties with multi-role access (Admin, Landlord, Tenant, Buyer).",
       "Integrated third-party property portals (Rightmove, Zoopla, OnTheMarket) for automated property syndication and lead management.",
@@ -119,10 +153,11 @@ export const PROJECTS: Project[] = [
     techStack: ["Go", "React", "TypeScript", "Wails", "Zustand"],
     location: "Global",
     period: "2024 - Present",
+    overview: "A Go-powered desktop workspace for managing SSH hosts, opening local or remote terminals, and keeping reusable command snippets close at hand.",
     description: [
-      "Developed a secure, modern SSH connection manager desktop application with a frameless window design and custom controls.",
-      "Features include full SSH connection management, terminal integration with split panes, command snippet management, and secure credential storage.",
-      "Built with Wails (Go + React), supporting local/guest modes, 15+ themes, and encrypted master password protection."
+      "Organized SSH hosts with groups, tags, favorites, key import, and host fingerprint verification.",
+      "Combined remote and local terminal sessions with tabs, split panes, workspace restore, and reusable command snippets.",
+      "Built with Wails, Go, React, and TypeScript, including guest mode and master-password encryption."
     ],
     images: [
         hostVaultApp1,
@@ -136,10 +171,11 @@ export const PROJECTS: Project[] = [
     techStack: ["React Native", "TypeScript", "Reanimated", "YouTube API"],
     location: "Global",
     period: "2025 - Present",
+    overview: "ConvertYT Go is a React Native video discovery and download app, with YouTube search, format and quality options, and a persistent download queue.",
     description: [
-      "Built a feature-rich video downloader with React Native and TypeScript, featuring a modern UI with dark/light mode and smooth 60fps animations.",
-      "Implemented real-time YouTube search via Data API v3 with pagination, search history, and offline mock data fallbacks.",
-      "Developed a comprehensive download system supporting multiple formats (MP4, MP3, WEBM) and qualities (144p to 4K) with background progress tracking."
+      "Built a cross-platform mobile app with React Native and TypeScript, including dark and light themes and animated interactions.",
+      "Added paginated YouTube search, search history, and a mock-data fallback when the search service is unavailable.",
+      "Implemented queued downloads with format and quality selection, progress tracking, and API or direct-stream download paths."
     ],
     images: [
         convertYTApp1,
@@ -152,7 +188,8 @@ export const PROJECTS: Project[] = [
     summary: "Sports & event management",
     techStack: ["NestJS", "TypeScript", "PostgreSQL", "RabbitMQ", "AWS"],
     location: "Lahore, Pakistan",
-    period: "06/2025 - Current",
+    period: "06/2025 - 09/2025",
+    overview: "A multi-tenant sports platform for coordinating clubs, challenges, and events, with event-driven notifications and responsive data workflows.",
     description: [
       "Built event-driven notification service using RabbitMQ with retry logic, cutting email latency by 60%.",
       "Developed shared entity modules and domain-separated services, reducing feature development time by 40%.",
@@ -164,29 +201,13 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    id: "sightflow",
-    title: "Sightflow - AI Support Assistant Platform",
-    summary: "AI support assistants",
-    techStack: ["Laravel", "React", "Python", "Gemini 2.0", "Pinecone", "AWS"],
-    location: "Lahore, Pakistan",
-    period: "12/2024 - 06/2025",
-    description: [
-      "Built a full-stack RAG platform with a Laravel REST API and React/Vite frontend, enabling companies to create customizable AI assistants.",
-      "Developed a Python AI engine using Google Gemini 2.0 Flash Live API and WebSockets for real-time voice, video, and screen sharing interactions.",
-      "Integrated Pinecone vector database for context-aware responses and AWS S3 for document storage, delivering intelligent customer support."
-    ],
-    images: [
-        sightflowApp1,
-        sightflowApp2
-    ]
-  },
-  {
     id: "fundreef",
     title: "Fundreef - Startup-Investor Marketplace",
     summary: "Startup & investor marketplace",
     techStack: ["Laravel", "Livewire", "MySQL", "Meilisearch", "Stripe", "Gemini AI"],
     location: "Global",
     period: "2024 - Present",
+    overview: "A two-sided marketplace connecting startups with investors, pairing searchable investor profiles with fundraising tools and a deal pipeline.",
     description: [
       "Built a full-stack two-sided marketplace connecting startups with investors, featuring comprehensive investor/fund database with 50+ data fields and Meilisearch-powered fast search.",
       "Developed AI-powered fundraising tools including pitch deck analyzer, business plan generator, term sheet analyzer, and company valuation calculator using Google Gemini API.",
